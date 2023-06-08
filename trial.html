@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Test</title>
+</head>
+
+<body>
+    <script>
+        // Open a WebSocket connection
+        const socket = new WebSocket('ws://127.0.0.1:8000//ws/chat/notifications/');
+
+        // Connection opened
+        socket.addEventListener('open', (event) => {
+            // Send a JSON message
+            socket.send(JSON.stringify({ message: 'Hello, world!' }));
+        });
+
+        // Listen for messages
+        socket.addEventListener('message', (event) => {
+            console.log('Message from server: ', JSON.parse(event.data));
+        });
+    </script>
+</body>
+
+</html>
